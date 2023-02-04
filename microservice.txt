@@ -1,0 +1,32 @@
+Microservices:
+- Segregates functionalitu into smaller separate services each with a sing responsibility
+- Scales out by deploying each service independently
+- Loosely Coupled
+- Enable autonomous development by different teams, languages and platforms
+- Can be written by smaller teams
+- Each Microservices can own it's own data/database
+
+From monolith to Microservices:
+- Break your application/system into smaller units
+- Use the strangler pattern
+
+Benefits:
+- Improvised fault isolation
+- Eliminate vendor or technology lock-in
+- Ease of understanding
+- Smaller and faster deployements
+- Scalability
+
+Drawbacks:
+- Complexity is added to resolve complexity issues
+    - Is your team trained and has made POCs (prove of concepts)
+    - Don't start with complex infrastructure
+- Testing may appear simpler but is it?
+- Deployment may appear simpler but is it?
+    - Hard to do with multiple teams
+    - One microservice can impact many Microservices
+- Multiple databases
+- Latency issues
+- Transient error
+- Multiple point of failure
+- How about security?
