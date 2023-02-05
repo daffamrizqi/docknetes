@@ -1,0 +1,80 @@
+What is Container:
+- A unit of software/deployment
+    1. Code
+    2. Runtime
+    3. System tools
+    4. System libraries
+- You take a container, push to the server and it should Run
+
+Why Containers:
+- Move faster by deploying smaller units
+- Use fewer resources
+- Fit more into the same host
+- Faster automation
+- Portability
+- Isolated from one container to the other
+
+Orchestrator:
+- Manage:
+    1. infrastructure
+    2, Container
+    3. deployment
+    4. Scaling
+    5. Failover
+    6. Health Monitoring
+    7. App upgrades, Zero-downtime deployments
+
+What is Docker:
+- An open source runtime for container
+- Command line tool fro container
+- "Dockerfile" file format for building container images
+
+Images and Container and docker summary:
+- Image is a template for creating a containers, and a container is a running instance of an image
+- An image is a BLUEPRINT for a docker container, which is a standalone executable package that includes
+  everything needed to run a piece of software, including the code, runtime, libraries, environment,
+  variables, and config files
+- Think of it as a snapshot of a complete environment that has been saved at a specific point in time
+
+
+CHEAT SHEET DOCKER RUNNING N STOPPING CONTAINER:
+1. docker pull [imageName] == pull an image from registry
+2. docker run [imageName] == run container
+3. docker run -d [imageName] == detached mode (run in the background)
+4. docker start [containerName] == Start Stopped container
+5. docker ps == list running containers
+6. docker ps -a == List running and stopped containers
+7. docker stop [containerName] == stop container
+8. docker kill [containerName] == kill container
+9. docker image inspect [imageName] == get image info
+
+CHEAT SHEET - CLEANING UP:
+1. docker rm [containerName] == Removes stopped container from container (docker ps -a)
+2. docker rm $(docker ps -a -q) == Removes all stopped container
+3. docker images === Lists images
+4. docker rmi [imageName] == Delete the image
+5. docker system prune -a == Removes all images not in use by any containers
+
+Explanation for unfamiliar docker command:
+1. docker container exec -it webserver bash
+    - Used to execute a command in an already running docker container
+    - "-i" : keeps the standard input open even if not attached, allowing
+             you to enter commands in the container
+    - "-t" : Allocates a pseudo-tty, which allows you to interact with the 
+             container as if it were a terminal
+    - The command is executed in the container named "webserver" and it opens
+      a bash shell in that container. 
+    - This allows you to run commands and perform actions within the container, as
+      if you were logged into the container itself 
+2. docker run -d -p 8080:80 --name webserver nginx
+    - Pull and run nginx server
+3. docker run --rm -d -p 3000:3000/tcp imageName:latest
+    - Run a docker container
+    - "--rm" == Automatically remove the container when it exits
+    - "-d" == Run the container in the background
+    - "-p 3000:3000/tcp" == Map the host's port 3000 to the container's port 3000, using TCP protocol
+
+Docker CLU Cheat-Sheet - Building a container:
+1. docker build -t [name:tag] . == Builds an image using a Dockerfile located in the same folder
+2. docker build -t [name:tag] -f == Builds an image using a Dockerfile located in a different folder
+3. docker tag [imageName] [name:tag] == tag an existing image

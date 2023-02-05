@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node",
+            "node": {
+                "package": "${workspaceFolder}/learn-to-dockerfile/simple_REST_API/package.json",
+                "localRoot": "${workspaceFolder}/learn-to-dockerfile/simple_REST_API"
+            }
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+Dockerfile:
+- Is a script that contains a set of instruction that Docker uses to build a Docker image
+- It tells Docker what to include in the image, how to configure it, and what to configure it
+    , and what command to run when a container is started from the image
