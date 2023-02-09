@@ -1,0 +1,46 @@
+Step by step process to build a Docker image using Dockerfile:
+1. Write a Dockerfile: 
+   A dockerfile is a sscript that contains instructions for building a
+   Docker Image. It sprecifies the base image to use, the files to copy into the image, and
+   the commands to run to set up the application
+
+2. Create a build context:
+   The build context is the directory that contains the Dockerfile and any other files needed
+   to build the image. Thus directiry shiuld be organized in a way that makes sense for The
+   image you are building
+
+3. Run the "docker image build" command:
+   Use the this command to build an image from the Dockerfile in the build context.
+   You'll need to specify the lication of the build context, and can also use options to
+   specify the image name and tag, and set build-time variables
+   command:
+   - docker image build -t myimage:latest .
+
+4. Verify the image was build successfully:
+   You should see the image listed in the output with the name and tag you specified
+   Use the docker command :
+   - docker image ls
+
+5. Run the image as container:
+   use the command docker run command to run the image as container. You can specify options to
+   map ports, set env, and more
+   command:
+   - docker run -p 8080:80 myimage
+
+6. verify the container is running:
+   use command to verify that the container is running. You should see the container listed in the 
+   output with its status set to "up"
+   command:
+   - docker ps
+
+Example in real case:
+- If you have for instance an express.js app, you can package it into docker image using Dockerfile.
+  The dockerfile specifies the base image, the files and dependencies to be included in the image
+  , and the commands to run to set up the application.
+- When you build the Docker image using the "docker image build" command, the image will contain
+  everything needed to run your Expess.js app, including the code, libraries, and runtime env
+- Once the image was built, you can run it as a container using the 'docker run' command. The container
+  runs in a isolated environment and has its own file system, network, and process space, making it 
+  possible to run multiple containers on the same host
+- By containerizing you Express.js app, you can ensure that the app is consistent and repeatable
+  across different environments, making it easier to deploy, test, and scale your application
