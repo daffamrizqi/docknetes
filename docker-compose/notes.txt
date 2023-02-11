@@ -1,0 +1,81 @@
+YAML:
+- YAML = YAML Ain't Markup Language
+- Human friendly data serialization standard / format that is used to store and exchange
+  data between different computer systems.
+- Used by Docker-compose and Kubernetes
+- In a simple terms, YAML is a way of representing data in a human-readable and easy-to-write
+  format
+- It uses indentation and key-value pairs to define the structure of the data
+- YAML is commonly used in CONFIGURATION FILES, where data is required to be stored in
+  a machine-readable format, but still needs to be easily editable by humans. it is
+  also used as data exchange format in many modern technologies, including Kubernetes and Docker
+
+Docker Compose:
+- Define and run milti-containers application
+- Define using YAML files
+- Run using docker CLI with compose plugin:
+    - Docker Compose
+
+Docker Compose Use Cases:
+- Workloads that don't require a full Orchestrator
+- Development and tests
+- Use of a service that can run Docker Compose files:
+  - Azure app service
+  - AWS ECS
+  - Virtual machines
+
+Docker Compose Steps:
+1. build the service:
+    docker compose build
+2. builds, re-creates, starts, attaches, to containers for a service:
+    docker compose up
+3. lists the services:
+    docker compose ps
+4. bring down what was created by UP:
+    docker compose down
+
+Docker Compose Cheat Sheet:
+- docker compose build == build the images
+- docker compose start == start the containers
+- docker compose stop == stop containers
+- docker compose up -d == Build and start in the background
+- docker compose ps == List what is running
+- docker compose rm == remove from memory
+- docker compose down == stop and remove
+- docker compose logs == get the logs
+- docker compose exec [container] bash == Run a command in a container
+
+
+------ CHAT-GPT ---------
+CHAT-GPT docker-compose:
+- A tool for defining and running multi-container Docker applications
+- It allows you to define the application's services, networlks, and volumes in a single
+  file called 'docker-compose.yml', and then start and stop all of the servives using a single command
+- A service in Docker compose is a container that running a specific application
+  or part of an application
+- For example, in a web application, you might have one service running a web server and
+  another service running a database
+- With docker compose, you can define both services in the same file, and then start and
+  and stop both services with a single command
+- To start the services defined in this 'docker-compose.yml' file, you would run the following command:
+  'docker-compose up'
+
+CHAT_HPT docker-compose use cases:
+1. Development:
+    Set up a development environment for an application with multiple services
+    for example, a web application might require a web server, a dabatabase, and caching layer.
+    With Docker compose, you can define all of these services in a single file and start
+    them with a single command, making it easier to set up and manage your development environment
+2. Testing:
+    Can be used to set up an isolated testing environment for your application
+    You can define all of the services required for your application in a 'docker-compose.yml' file, and then use
+    that file to start the services an run your test
+3. Staging and Production:
+    can also be used to deploy your application to a staging or production environment
+    You can use the same 'docker-compose.yml' file to start all of the services required
+    for your application in a single command, making it easier to manage your
+    production environment
+4. CI/CD
+5. Microservices Architecture:
+    Can be used to manage microservices arch, where an application is broken down into
+    multiple smaller services
