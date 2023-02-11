@@ -26,3 +26,27 @@ Volumes cheat sheet:
 - docker volume inspect [volumeName] == displays the volume info
 - docker volume rm [volumeName] == deletes a volume
 - docker volume prune == Deletes all volumes not mounted
+
+Commands if want to try make volume and mount it to container:
+1. docker volume create myvol:
+   - create a docker volume (obviously)
+1. docker run -d --name voltest -v myvol:/app nginx:latest:
+  - docker run -d == run a container from an image in the backgrounf, as a daemon process
+  - --name voltest == --name allows you to specify a custom name for the container, in this case voltest
+  - -v myvol:/app == 'v maps a volume to the container. The volume named myvol will be mounted
+                      to the "/app" directory inside the container
+  - nginx:latest == This is the image that the container will be based on, In this case, its 
+                    the latest version of the Nginx image 
+  
+What is daemon process?
+- A daemon is a type of program that runs in the background on a computer, rather that foreground
+  where you can see it
+- Think of Daemon as a background worker that helps other programs by performing certain tasks
+- For example, a web server often has a daemon that listens for incoming connections and serves
+  web page to clients
+- A daemon might also be responsible for logging system events, checking for software updates,
+  or performing other tasks that need to run continuously
+-In the context of the Docker command you provided, the -d option is used to run the 
+ Nginx container as a daemon process, which means it will run in the background and 
+ not take up the terminal or command line interface. This is useful when you want to run a 
+ container and continue using the terminal or command line interface for other tasks.
