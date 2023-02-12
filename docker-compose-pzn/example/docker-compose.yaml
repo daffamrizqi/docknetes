@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  # Docker Compose akan membuat Container bernama nginx-example
+  # dan mengambil dari image nginx:latest
+  nginx-example:
+    container_name: nginx-example
+    image: nginx:latest  
+  nginx-example2:
+    container_name: nginx-example2
+    image: nginx:latest
