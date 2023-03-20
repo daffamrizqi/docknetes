@@ -62,3 +62,20 @@ ADD text/*.txt hello/
 a directory called hello created by RUN Instruction -> cat hello.txt inside hello directory
 
 CMD cat "hello/hello.txt"
+
+
+# .dockerignore File
+# di dalam .dockerignore
+text/*.log
+text/temp
+
+
+# EXPOSE Instruction
+# EXPOSE hanya digunakan untuk informasi/dokumentasi pada Dockerfile
+FROM golang:1.18-alpine
+
+RUN mkdir app
+COPY main.go app/
+EXPOSE 8080
+
+CMD go run app/main.go
