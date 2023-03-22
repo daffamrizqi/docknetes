@@ -63,7 +63,7 @@ a directory called hello created by RUN Instruction -> cat hello.txt inside hell
 
 CMD cat "hello/hello.txt"
 
-
+docker container create --name env --publish 9090:9090 --env APP_PORT=9090 daffamrizqi/env
 # .dockerignore File
 # di dalam .dockerignore
 text/*.log
@@ -76,6 +76,17 @@ FROM golang:1.18-alpine
 
 RUN mkdir app
 COPY main.go app/
+EXPOSE 8080
+
+CMD go run app/main.go
+
+
+# ENV Instruction
+FROM golang:1.18-alpine
+
+RUN mkdir app
+COPY main.go app/
+
 EXPOSE 8080
 
 CMD go run app/main.go
