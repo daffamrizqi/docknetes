@@ -141,3 +141,22 @@ docker build -t daffamrizqi/arg arg --build-arg  app=pzn
 # ARG janya bisa diakses pada waktu build time, sedangkan CMD itu dijalankan saat runtime
 #  Jadi saati menggunakan ARG pada CMD, kita perlu memasukan data ARG tsb ke ENV
 
+
+
+# HEALTCHECK Instruction
+FROM golang:1.18-alpine
+
+ARG app=main
+ENV app=$app
+
+RUN echo "Building with app=${app}"
+
+RUN mkdir app
+COPY main.go app/
+RUN mv app/main.go app/${app}.go
+
+EXPOSE 8080
+
+CMD go run app/${app}.go
+
+
