@@ -90,3 +90,54 @@ COPY main.go app/
 EXPOSE 8080
 
 CMD go run app/main.go
+
+
+# VOLUME Instruction
+FROM golang:1.18-alpine
+
+ENV APP_PORT=8080
+ENV APP_DATA=/logs
+
+RUN mkdir ${APP_DATA}
+RUN mkdir app
+COPY main.go app/
+
+EXPOSE ${APP_PORT}
+VOLUME ${APP_DATA}
+CMD go run app/main.go
+
+
+# WORKDIR Instruction
+FROM golang:1.18-alpine
+
+# WORKDIR akan membuat dir secara otomatis jika dir belum ada
+WORKDIR /app
+COPY main.go /app
+
+EXPOSE ${APP_PORT}
+
+# karena sekarang workdir menjadi app, maka command run go menjadi seperti ini
+CMD go run main.go
+
+
+# ARG Instruction
+FROM golang:1.18-alpine
+
+ARG app=main
+ENV app=$app
+
+RUN echo "Building with app=${app}"
+
+RUN mkdir app
+COPY main.go app/
+RUN mv app/main.go app/${app}.go
+
+EXPOSE 8080
+
+CMD go run app/${app}.go
+
+# saat proses build dan pass arg
+docker build -t daffamrizqi/arg arg --build-arg  app=pzn
+# ARG janya bisa diakses pada waktu build time, sedangkan CMD itu dijalankan saat runtime
+#  Jadi saati menggunakan ARG pada CMD, kita perlu memasukan data ARG tsb ke ENV
+
