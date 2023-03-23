@@ -142,7 +142,6 @@ docker build -t daffamrizqi/arg arg --build-arg  app=pzn
 #  Jadi saati menggunakan ARG pada CMD, kita perlu memasukan data ARG tsb ke ENV
 
 
-
 # HEALTCHECK Instruction
 FROM golang:1.18-alpine
 
@@ -158,5 +157,32 @@ RUN mv app/main.go app/${app}.go
 EXPOSE 8080
 
 CMD go run app/${app}.go
+
+
+# ENNTRYPOINT Instruction
+FROM golang:1.18-alpine
+
+RUN mkdir /app/
+COPY main.go /app/
+
+EXPOSE 8080
+
+ENTRYPOINT ["go", "run"]
+CMD ["/app/main.go"]
+
+
+# Multi Stage Build Image
+FROM golang:1.18-alpine as builder
+WORKDIR /app/
+
+# . (copy main.go to working directory)
+COPY main.go .
+#  command to compile golang progmram and save it into main
+RUN go build -o /app/main main.go
+
+FROM alpine:3
+WORKDIR /app/
+COPY --from=builder /app/main ./
+CMD /app/main
 
 
