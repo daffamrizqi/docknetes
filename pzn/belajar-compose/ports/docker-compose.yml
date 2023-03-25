@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  # using long syntax port forwarding
+  nginx-port1:
+    image: nginx:latest
+    container_name: nginx_long_syntax
+    ports:
+      - protocol: tcp
+        published: 8080
+        target: 80
+
+  # using short syntax port forwarding
+  nginx-port2:
+    image: nginx:latest
+    container_name: nginx_short_syntax
+    ports:
+    - "8081:80"
