@@ -12,7 +12,7 @@ services:
       MONGO_INITDB_PASSWORD: Naufal11
       MONGO_INITDB_DATABASE: admin
     volumes:
-      - "./data-mongo-volume:/data/db"
+      - "mongo-data1:/data/db"
 
     # long syntax
   mongo-volume_compose_2:
@@ -25,7 +25,13 @@ services:
       MONGO_INITDB_PASSWORD: Naufal11
       MONGO_INITDB_DATABASE: admin
     volumes:
-      - type: bind
-        source: "./data-mongo-volume2"
+      - type: volume
+        source: mongo-data2
         target: "/data/db"
         read_only: false
+
+volumes:
+  mongo-data1:
+    name: mongo-data1
+  mongo-data2:
+    name: mongo-data2
